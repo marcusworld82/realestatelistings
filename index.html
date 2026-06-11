@@ -24,42 +24,56 @@
       <ul class="nav__links" id="navLinks">
         <li><a href="#features">Features</a></li>
         <li><a href="#proof">Results</a></li>
-        <li><a href="#showcase">Videos</a></li>
+        <li><a href="#showcase">Sample Tours</a></li>
         <li><a href="#contact" class="nav__cta">Book a Session</a></li>
       </ul>
     </div>
   </nav>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero" id="hero">
       <div class="hero__aurora"></div>
-      <div class="hero__bg">
-        <canvas id="heroCanvas"></canvas>
-      </div>
+      <div class="hero__bg"><canvas id="heroCanvas"></canvas></div>
       <div class="container hero__shell">
         <div class="hero__content glass glass--hero">
-          <div class="hero__eyebrow reveal">AI-Powered Real Estate Video</div>
-          <div class="hero__copy hero__copy--full reveal">
+
+          <!-- Top label row -->
+          <div class="hero__top-row reveal">
             <div class="hero__badge">Luxury Listing Performance Engine</div>
-            <div class="hero__market-inline glass glass--mini-dark">
-              <div class="hero__market-label">Market Reality</div>
-              <div class="hero__market-main">80% of qualified buyers want video before scheduling a showing.</div>
-            </div>
-            <h1 class="hero__headline hero__headline--full">
-              Your Listings Are Invisible to 73% of Buyers
-            </h1>
-            <p class="hero__sub hero__sub--wide">
-              Static photos don't move people. Video does. Right now, your listings sit on portals with flat images while agents across town are showing homes in immersive video tours. Buyers scroll past. Days-on-market increases. Price concessions start. VideoListAI turns every property into a cinematic tour automatically and moves them 23 days faster.
-            </p>
-            <div class="hero__ctas">
-              <a href="#showcase" class="btn btn--primary">View Sample Tours</a>
-            </div>
-            <div class="hero__trust">
-              <div class="hero__trust-item glass glass--mini"><span class="num">47,392</span><span>Videos Generated</span></div>
-              <div class="hero__trust-item glass glass--mini"><span class="num">12,847</span><span>Properties Sold Faster</span></div>
-              <div class="hero__trust-item glass glass--mini"><span class="num">2,000+</span><span>Agents</span></div>
+            <div class="hero__market-reality">
+              <div class="hero__mr-label">Market Reality</div>
+              <div class="hero__mr-stat">80%</div>
+              <p class="hero__mr-text">of qualified buyers want video before scheduling a showing.</p>
+              <div class="hero__mr-pills">
+                <div class="hero__mr-pill glass glass--mini"><span>3-4 hrs</span><small>Shooting per property</small></div>
+                <div class="hero__mr-pill glass glass--mini"><span>8-12 hrs</span><small>Editing per property</small></div>
+                <div class="hero__mr-pill glass glass--mini"><span>28 days</span><small>Longer on market without video</small></div>
+              </div>
             </div>
           </div>
+
+          <!-- Main headline -->
+          <h1 class="hero__headline reveal">
+            Your Listings Are Invisible<br class="headline-br" /> to 73% of Buyers
+          </h1>
+
+          <p class="hero__sub reveal">
+            Static photos don't move people. Video does. Right now, your listings sit on portals with flat images while agents across town are showing homes in immersive video tours. Buyers scroll past. Days-on-market increases. Price concessions start. VideoListAI turns every property into a cinematic tour automatically and moves them <strong>23 days faster.</strong>
+          </p>
+
+          <div class="hero__ctas reveal">
+            <a href="#contact" class="btn btn--primary">Book a Session</a>
+            <a href="#showcase" class="btn btn--ghost" id="viewSampleBtn">View Sample Tours</a>
+          </div>
+
+          <div class="hero__trust reveal">
+            <div class="hero__trust-item glass glass--mini"><span class="num">47,392</span><span>Videos Generated</span></div>
+            <div class="hero__trust-item glass glass--mini"><span class="num">12,847</span><span>Properties Sold Faster</span></div>
+            <div class="hero__trust-item glass glass--mini"><span class="num">2,000+</span><span>Active Agents</span></div>
+          </div>
+
         </div>
       </div>
       <div class="hero__scroll-indicator" aria-hidden="true">
@@ -68,6 +82,7 @@
       </div>
     </section>
 
+    <!-- PAIN -->
     <section class="pain section section--soft" id="pain">
       <div class="container">
         <div class="section__heading reveal">
@@ -76,44 +91,20 @@
           <p class="section-sub">Yet most agents are still uploading 12 flat photos and wondering why their phone isn't ringing.</p>
         </div>
         <div class="pain__grid fluid-grid">
-          <article class="pain__card reveal glass">
-            <div class="pain__icon">⏱</div>
-            <h3>3-4 Hours</h3>
-            <p>Shooting video per property, plus another 8-12 hours editing or $300-600 in freelance costs.</p>
-          </article>
-          <article class="pain__card reveal glass">
-            <div class="pain__icon">📅</div>
-            <h3>40+ Days</h3>
-            <p>By the time video is live, 40+ days of market exposure have already passed you by.</p>
-          </article>
-          <article class="pain__card reveal glass">
-            <div class="pain__icon">💸</div>
-            <h3>$4,200 Lost</h3>
-            <p>Every 28 extra days on market costs the seller $4,200 in carrying costs and costs you the relationship.</p>
-          </article>
-          <article class="pain__card reveal glass">
-            <div class="pain__icon">👻</div>
-            <h3>Buyer Ghost Rate</h3>
-            <p>Buyers ghost because they haven't actually seen the space. Video eliminates the uncertainty that kills deals.</p>
-          </article>
+          <article class="pain__card reveal glass"><div class="pain__icon">⏱</div><h3>3-4 Hours</h3><p>Shooting video per property, plus another 8-12 hours editing or $300-600 in freelance costs.</p></article>
+          <article class="pain__card reveal glass"><div class="pain__icon">📅</div><h3>40+ Days</h3><p>By the time video is live, 40+ days of market exposure have already passed you by.</p></article>
+          <article class="pain__card reveal glass"><div class="pain__icon">💸</div><h3>$4,200 Lost</h3><p>Every 28 extra days on market costs the seller $4,200 in carrying costs and costs you the relationship.</p></article>
+          <article class="pain__card reveal glass"><div class="pain__icon">👻</div><h3>Buyer Ghost Rate</h3><p>Buyers ghost because they haven't actually seen the space. Video eliminates the uncertainty that kills deals.</p></article>
         </div>
         <div class="pain__cost reveal glass glass--band">
-          <div class="pain__cost-item">
-            <span class="pain__cost-num">28</span>
-            <span class="pain__cost-label">Extra days on market without video</span>
-          </div>
-          <div class="pain__cost-item">
-            <span class="pain__cost-num">$4,200</span>
-            <span class="pain__cost-label">In carrying costs per extra 28 days</span>
-          </div>
-          <div class="pain__cost-item">
-            <span class="pain__cost-num">$8k-15k</span>
-            <span class="pain__cost-label">Lost commission depending on price point</span>
-          </div>
+          <div class="pain__cost-item"><span class="pain__cost-num">28</span><span class="pain__cost-label">Extra days on market without video</span></div>
+          <div class="pain__cost-item"><span class="pain__cost-num">$4,200</span><span class="pain__cost-label">In carrying costs per extra 28 days</span></div>
+          <div class="pain__cost-item"><span class="pain__cost-num">$8k-15k</span><span class="pain__cost-label">Lost commission depending on price point</span></div>
         </div>
       </div>
     </section>
 
+    <!-- VIDEO SHOWCASE -->
     <section class="showcase section" id="showcase">
       <div class="container">
         <div class="section__heading reveal section__heading--center">
@@ -124,107 +115,97 @@
         <div class="showcase__grid fluid-grid fluid-grid--videos">
           <article class="showcase__item reveal glass">
             <div class="showcase__video-wrap">
+              <!-- PLACEHOLDER: Replace src with your actual video URL -->
               <video class="showcase__video" controls preload="none" poster="https://source.unsplash.com/400x711/?luxury,home,interior">
                 <source src="#" type="video/mp4" />
               </video>
-              <div class="showcase__overlay">
-                <button class="showcase__play" aria-label="Play video">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-              </div>
+              <div class="showcase__overlay"><button class="showcase__play" aria-label="Play video"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>
             </div>
-            <div class="showcase__meta">
-              <span class="showcase__tag">Luxury Single Family</span>
-              <p>Columbus, OH — Sold in 14 Days</p>
-            </div>
+            <div class="showcase__meta"><span class="showcase__tag">Luxury Single Family</span><p>Columbus, OH — Sold in 14 Days</p></div>
           </article>
           <article class="showcase__item reveal glass showcase__item--featured">
             <div class="showcase__video-wrap">
+              <!-- PLACEHOLDER: Replace src with your actual video URL -->
               <video class="showcase__video" controls preload="none" poster="https://source.unsplash.com/400x711/?modern,kitchen,real+estate">
                 <source src="#" type="video/mp4" />
               </video>
-              <div class="showcase__overlay">
-                <button class="showcase__play" aria-label="Play video">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-              </div>
+              <div class="showcase__overlay"><button class="showcase__play" aria-label="Play video"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>
             </div>
-            <div class="showcase__meta">
-              <span class="showcase__tag">Suburban Townhome</span>
-              <p>Atlanta, GA — 3.2x More Showings</p>
-            </div>
+            <div class="showcase__meta"><span class="showcase__tag">Suburban Townhome</span><p>Atlanta, GA — 3.2x More Showings</p></div>
           </article>
           <article class="showcase__item reveal glass">
             <div class="showcase__video-wrap">
+              <!-- PLACEHOLDER: Replace src with your actual video URL -->
               <video class="showcase__video" controls preload="none" poster="https://source.unsplash.com/400x711/?house,pool,backyard">
                 <source src="#" type="video/mp4" />
               </video>
-              <div class="showcase__overlay">
-                <button class="showcase__play" aria-label="Play video">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                </button>
-              </div>
+              <div class="showcase__overlay"><button class="showcase__play" aria-label="Play video"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>
             </div>
-            <div class="showcase__meta">
-              <span class="showcase__tag">Condo + Pool</span>
-              <p>Miami, FL — Sold $22k Over Ask</p>
-            </div>
+            <div class="showcase__meta"><span class="showcase__tag">Condo + Pool</span><p>Miami, FL — Sold $22k Over Ask</p></div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- FEATURES -->
     <section class="features section section--soft" id="features">
       <div class="container">
         <div class="section__heading reveal">
           <div class="section-label">What I Create For You</div>
-          <h2 class="section-title">Five Services That Turn Property Assets Into Premium Marketing Content</h2>
+          <h2 class="section-title">Five Ways I Transform<br />Your Listings Into Results</h2>
         </div>
         <div class="features__list">
+
           <article class="features__item reveal glass">
             <div class="features__num">01</div>
             <div class="features__body">
               <h3>Cinematic AI Listing Videos</h3>
               <p>I transform your existing property photos into cinematic 90-second, 2-minute, and 3-minute video tours designed to make listings feel like high-end productions. No filming. No scheduling crews. No expensive videographers. Your listings become immersive experiences that capture attention and help buyers visualize the property.</p>
             </div>
-            <div class="features__badge">High-end video</div>
+            <div class="features__badge">3 min</div>
           </article>
+
           <article class="features__item reveal glass">
             <div class="features__num">02</div>
             <div class="features__body">
               <h3>Multi-Platform Marketing Assets</h3>
-              <p>I create optimized video versions of your listings for every platform where buyers are searching. MLS-ready videos, vertical social media content, website presentations, Instagram Reels, TikTok, and more. One property to multiple marketing formats designed for maximum reach.</p>
+              <p>I create optimized video versions of your listings for every platform where buyers are searching. MLS-ready videos, vertical social media content, website presentations, Instagram Reels, TikTok, and more. One property — multiple marketing formats designed for maximum reach.</p>
             </div>
-            <div class="features__badge">Max reach</div>
+            <div class="features__badge">All platforms</div>
           </article>
+
           <article class="features__item reveal glass">
             <div class="features__num">03</div>
             <div class="features__body">
               <h3>AI-Powered Property Enhancements</h3>
-              <p>I enhance your listings with AI-generated visuals that help buyers imagine the full potential of a space. Transform empty rooms into beautifully staged spaces with realistic furniture, create luxury-style interior showcases, generate drone-style property visuals, create construction-style walkthrough experiences, and highlight key selling features like kitchens, master suites, outdoor areas, and unique upgrades. Your buyers don't just see a property, they experience what it could become.</p>
+              <p>I enhance your listings with AI-generated visuals that help buyers imagine the full potential of a space. Transform empty rooms into beautifully staged spaces, create luxury-style interior showcases, generate drone-style property visuals, create construction-style walkthrough experiences, and highlight key selling features like kitchens, master suites, outdoor areas, and unique upgrades. Your buyers don't just see a property — they experience what it could become.</p>
             </div>
             <div class="features__badge">AI enhanced</div>
           </article>
+
           <article class="features__item reveal glass">
             <div class="features__num">04</div>
             <div class="features__body">
               <h3>24-Hour Listing Content Delivery</h3>
               <p>Speed matters in real estate. I transform your property assets into professional marketing content in less than 24 hours. No waiting days for video production. No coordinating with photographers, editors, or production crews.</p>
             </div>
-            <div class="features__badge">24 hours</div>
+            <div class="features__badge">24 hrs</div>
           </article>
+
           <article class="features__item reveal glass">
             <div class="features__num">05</div>
             <div class="features__body">
               <h3>Scalable Listing Content Creation</h3>
               <p>Have multiple properties hitting the market? I can transform your entire inventory into professional marketing content without the need to hire photographers, videographers, editors, or production teams. More listings. More content. More opportunities to stand out.</p>
             </div>
-            <div class="features__badge">Scale content</div>
+            <div class="features__badge">Scale fast</div>
           </article>
+
         </div>
       </div>
     </section>
 
+    <!-- BENEFITS TABLE -->
     <section class="benefits section" id="benefits">
       <div class="container">
         <div class="section__heading reveal">
@@ -232,10 +213,7 @@
           <h2 class="section-title">Every Agent Need, Solved</h2>
         </div>
         <div class="benefits__table reveal glass">
-          <div class="benefits__row benefits__row--head">
-            <div>Agent Need</div>
-            <div>VideoListAI Delivers</div>
-          </div>
+          <div class="benefits__row benefits__row--head"><div>Agent Need</div><div>VideoListAI Delivers</div></div>
           <div class="benefits__row"><div>Sell faster</div><div>Average <strong>23-day reduction</strong> in days-on-market</div></div>
           <div class="benefits__row"><div>More showings</div><div><strong>3.2x more showings</strong> with video vs. photos alone</div></div>
           <div class="benefits__row"><div>Higher offers</div><div>Homes with video sell for <strong>5-11% higher</strong> (avg $18k on $350k home)</div></div>
@@ -247,6 +225,7 @@
       </div>
     </section>
 
+    <!-- PROOF -->
     <section class="proof section section--contrast" id="proof">
       <div class="proof__bg"></div>
       <div class="container">
@@ -263,6 +242,7 @@
       </div>
     </section>
 
+    <!-- TESTIMONIALS -->
     <section class="testimonials section" id="testimonials">
       <div class="container">
         <div class="section__heading reveal">
@@ -284,6 +264,7 @@
       </div>
     </section>
 
+    <!-- PROBLEMS -->
     <section class="problems section section--soft" id="problems">
       <div class="container">
         <div class="section__heading reveal">
@@ -292,7 +273,7 @@
         </div>
         <div class="problems__list fluid-list">
           <article class="problems__item reveal glass"><div class="problems__q">"I don't have video content for my listings"</div><div class="problems__a">3-minute generation from photos. No equipment. No crew. No delay.</div></article>
-          <article class="problems__item reveal glass"><div class="problems__q">"Video is too expensive"</div><div class="problems__a">$0 per video (subscription model). Professional quality.</div></article>
+          <article class="problems__item reveal glass"><div class="problems__q">"Video is too expensive"</div><div class="problems__a">$0 per video (subscription model). Professional quality. Unlimited.</div></article>
           <article class="problems__item reveal glass"><div class="problems__q">"I don't have time to shoot"</div><div class="problems__a">Photos uploaded → video ready in your portal in minutes.</div></article>
           <article class="problems__item reveal glass"><div class="problems__q">"My listings aren't standing out"</div><div class="problems__a">Cinematic tours beat static images. Buyers click more. Agents call more. You show more.</div></article>
           <article class="problems__item reveal glass"><div class="problems__q">"Buyers are surprised at showings"</div><div class="problems__a">Video shows reality. No buyer is shocked. No renegotiations. Faster close.</div></article>
@@ -300,6 +281,7 @@
       </div>
     </section>
 
+    <!-- ROI CALCULATOR -->
     <section class="roi section" id="roi">
       <div class="container">
         <div class="section__heading reveal">
@@ -309,16 +291,8 @@
         </div>
         <div class="roi__card reveal glass glass--roi">
           <div class="roi__inputs">
-            <div class="roi__input-group">
-              <label>Monthly Listings</label>
-              <input type="range" id="listingsRange" min="1" max="30" value="10" />
-              <span id="listingsVal">10</span>
-            </div>
-            <div class="roi__input-group">
-              <label>Average Listing Price ($)</label>
-              <input type="range" id="priceRange" min="100000" max="2000000" step="10000" value="350000" />
-              <span id="priceVal">$350,000</span>
-            </div>
+            <div class="roi__input-group"><label>Monthly Listings</label><input type="range" id="listingsRange" min="1" max="30" value="10" /><span id="listingsVal">10</span></div>
+            <div class="roi__input-group"><label>Average Listing Price ($)</label><input type="range" id="priceRange" min="100000" max="2000000" step="10000" value="350000" /><span id="priceVal">$350,000</span></div>
           </div>
           <div class="roi__output">
             <div class="roi__result glass glass--mini-dark"><span class="roi__result-label">Monthly Carrying Cost Savings</span><span class="roi__result-val" id="roiCarrying">$42,000</span></div>
@@ -329,49 +303,52 @@
       </div>
     </section>
 
+    <!-- CTA STACK -->
     <section class="cta-stack section section--contrast" id="cta">
       <div class="cta-stack__bg"></div>
       <div class="container">
         <div class="cta-stack__shell reveal glass glass--cta">
           <div class="section-label">Get Started</div>
-          <h2 class="section-title">Ready to Elevate Your Listings With Premium AI Video?</h2>
+          <h2 class="section-title">Join 2,000+ Agents Who<br />Are Selling Faster With Video</h2>
           <div class="cta-stack__buttons">
-            <a href="#booking-form" class="btn btn--primary btn--lg">Book a Demo</a>
-            <a href="#contact-options" class="btn btn--white btn--lg">Contact Me</a>
+            <a href="#contact" class="btn btn--primary btn--lg">Book a Demo</a>
+            <a href="#contact-direct" class="btn btn--ghost-white btn--lg">Contact Me</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="contact section" id="contact">
       <div class="container">
         <div class="section__heading reveal">
           <div class="section-label">Work With Me Directly</div>
           <h2 class="section-title">Ready to Book Your<br />AI Video Listing Session?</h2>
-          <p class="section-sub">Reach out directly, either through Instagram or phone, or book a real estate video listing session.</p>
+          <p class="section-sub">Reach out directly through Instagram or phone, or book a real estate video listing session below.</p>
         </div>
         <div class="contact__grid">
-          <div class="contact__options reveal" id="contact-options">
+
+          <!-- Direct contact options anchored for Contact Me link -->
+          <div class="contact__options reveal" id="contact-direct">
             <a href="https://instagram.com" target="_blank" class="contact__option glass" rel="noopener noreferrer">
+              <!-- PLACEHOLDER: Replace href with your actual Instagram URL -->
               <div class="contact__option-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </div>
-              <div>
-                <strong>Instagram</strong>
-                <span>DM me directly for a fast reply</span>
-              </div>
+              <div><strong>Instagram</strong><span>DM me directly for a fast reply</span></div>
             </a>
             <a href="tel:+1XXXXXXXXXX" class="contact__option glass">
+              <!-- PLACEHOLDER: Replace with your actual phone number -->
               <div class="contact__option-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
-              <div>
-                <strong>Call or Text</strong>
-                <span>(XXX) XXX-XXXX</span>
-              </div>
+              <div><strong>Call or Text</strong><span>(XXX) XXX-XXXX</span></div>
             </a>
           </div>
-          <div class="contact__form reveal glass glass--form" id="booking-form">
+
+          <!-- Booking form anchored for Book a Demo -->
+          <div class="contact__form reveal glass glass--form">
+            <!-- PLACEHOLDER: Replace action with your Formspree endpoint -->
             <form action="https://formspree.io/f/XXXXXXXX" method="POST" class="form">
               <div class="form__row">
                 <input type="text" name="name" placeholder="Your Name" required />
@@ -383,9 +360,11 @@
               <button type="submit" class="btn btn--primary btn--full">Book My Video Session</button>
             </form>
           </div>
+
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
@@ -393,11 +372,7 @@
       <div class="footer__inner glass glass--footer">
         <div class="footer__logo">Video<span>List</span>AI</div>
         <p class="footer__copy">© 2026 VideoListAI. Cinematic AI real estate video generated in minutes.</p>
-        <div class="footer__links">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#contact">Contact</a>
-        </div>
+        <div class="footer__links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#contact">Contact</a></div>
       </div>
     </div>
   </footer>

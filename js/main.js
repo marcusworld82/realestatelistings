@@ -2,6 +2,7 @@
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ── CANVAS PARTICLES ──────────────────────────────────────────────
 const canvas = document.getElementById('heroCanvas');
 const ctx = canvas ? canvas.getContext('2d') : null;
 let particles = [];
@@ -28,9 +29,8 @@ class Particle {
   update() {
     this.x += this.vx;
     this.y += this.vy;
-    if (this.x < -10 || this.x > canvas.offsetWidth + 10 || this.y < -10 || this.y > canvas.offsetHeight + 10) {
-      this.reset();
-    }
+    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    if (this.x < -10 || this.x > w + 10 || this.y < -10 || this.y > h + 10) this.reset();
   }
   draw() {
     ctx.beginPath();
@@ -45,12 +45,12 @@ function initParticles() {
   resizeCanvas();
   particles = [];
   const count = Math.min(120, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 15000));
-  for (let i = 0; i < count; i += 1) particles.push(new Particle());
+  for (let i = 0; i < count; i++) particles.push(new Particle());
 }
 
 function drawLines() {
-  for (let i = 0; i < particles.length; i += 1) {
-    for (let j = i + 1; j < particles.length; j += 1) {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const dist = Math.hypot(dx, dy);
@@ -70,10 +70,11 @@ function animateCanvas() {
   if (!canvas || prefersReducedMotion) return;
   ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
   drawLines();
-  particles.forEach((p) => { p.update(); p.draw(); });
+  particles.forEach(p => { p.update(); p.draw(); });
   rafId = requestAnimationFrame(animateCanvas);
 }
 
+// ── NAV ───────────────────────────────────────────────────────────
 const nav = document.getElementById('nav');
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
@@ -94,143 +95,142 @@ if (navToggle && navLinks) {
       spans[1].style.opacity = '0';
       spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
     } else {
-      spans.forEach((span) => {
-        span.style.transform = '';
-        span.style.opacity = '';
-      });
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
     }
   });
-
-  navLinks.querySelectorAll('a').forEach((link) => {
+  navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.querySelectorAll('span').forEach((span) => {
-        span.style.transform = '';
-        span.style.opacity = '';
-      });
+      navToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
     });
   });
 }
 
+// ── SCROLL REVEAL ─────────────────────────────────────────────────
 const reveals = document.querySelectorAll('.reveal');
 if (!prefersReducedMotion) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach((el, index) => {
-    el.style.transitionDelay = `${(index % 4) * 70}ms`;
-    observer.observe(el);
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    revealObs.observe(el);
   });
 } else {
-  reveals.forEach((el) => el.classList.add('visible'));
+  reveals.forEach(el => el.classList.add('visible'));
 }
 
+// ── COUNTERS ─────────────────────────────────────────────────────
 const counters = document.querySelectorAll('.proof__num[data-target]');
 function animateCounter(el) {
   const target = Number(el.dataset.target);
   const isDollar = el.classList.contains('proof__num--dollar');
   const start = performance.now();
   const duration = 2200;
-  const tick = (time) => {
-    const progress = Math.min((time - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 4);
-    const value = Math.floor(target * eased);
-    el.textContent = isDollar ? `$${value.toLocaleString()}` : value.toLocaleString();
-    if (progress < 1) requestAnimationFrame(tick);
+  const tick = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 4);
+    const val = Math.floor(target * eased);
+    el.textContent = isDollar ? `$${val.toLocaleString()}` : val.toLocaleString();
+    if (p < 1) requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
 }
-
 if (counters.length) {
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
+  const cObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { animateCounter(entry.target); cObs.unobserve(entry.target); }
     });
   }, { threshold: 0.35 });
-  counters.forEach((counter) => counterObserver.observe(counter));
+  counters.forEach(c => cObs.observe(c));
 }
 
+// ── ROI CALCULATOR ───────────────────────────────────────────────
 const listingsRange = document.getElementById('listingsRange');
-const priceRange = document.getElementById('priceRange');
-const listingsVal = document.getElementById('listingsVal');
-const priceVal = document.getElementById('priceVal');
-const roiCarrying = document.getElementById('roiCarrying');
+const priceRange    = document.getElementById('priceRange');
+const listingsVal   = document.getElementById('listingsVal');
+const priceVal      = document.getElementById('priceVal');
+const roiCarrying   = document.getElementById('roiCarrying');
 const roiCommission = document.getElementById('roiCommission');
-const roiAnnual = document.getElementById('roiAnnual');
+const roiAnnual     = document.getElementById('roiAnnual');
 
-function formatMoney(value) {
-  return `$${Math.round(value).toLocaleString()}`;
-}
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
 
-function calculateROI() {
+function calcROI() {
   if (!listingsRange || !priceRange) return;
   const listings = Number(listingsRange.value);
-  const price = Number(priceRange.value);
-  const commissionRate = 0.025;
-  const dailyCarry = price * 0.005 / 30;
-  const daysSaved = 23;
-  const carryingSavings = listings * dailyCarry * daysSaved;
-  const extraSales = listings / 10;
-  const extraCommission = extraSales * price * commissionRate;
-  const annualImpact = (carryingSavings + extraCommission) * 12;
-
-  listingsVal.textContent = listings.toLocaleString();
-  priceVal.textContent = formatMoney(price);
-  roiCarrying.textContent = formatMoney(carryingSavings);
-  roiCommission.textContent = formatMoney(extraCommission);
-  roiAnnual.textContent = formatMoney(annualImpact);
+  const price    = Number(priceRange.value);
+  const dailyCarry  = price * 0.005 / 30;
+  const carryings   = listings * dailyCarry * 23;
+  const commission  = (listings / 10) * price * 0.025;
+  const annual      = (carryings + commission) * 12;
+  listingsVal.textContent   = listings.toLocaleString();
+  priceVal.textContent      = fmt(price);
+  roiCarrying.textContent   = fmt(carryings);
+  roiCommission.textContent = fmt(commission);
+  roiAnnual.textContent     = fmt(annual);
 }
+[listingsRange, priceRange].forEach(el => el && el.addEventListener('input', calcROI));
+calcROI();
 
-[listingsRange, priceRange].forEach((input) => {
-  if (input) input.addEventListener('input', calculateROI);
-});
-calculateROI();
-
-document.querySelectorAll('.showcase__video-wrap').forEach((wrap) => {
-  const video = wrap.querySelector('video');
+// ── VIDEO PLAY BUTTONS ───────────────────────────────────────────
+document.querySelectorAll('.showcase__video-wrap').forEach(wrap => {
+  const video   = wrap.querySelector('video');
   const overlay = wrap.querySelector('.showcase__overlay');
-  const playButton = wrap.querySelector('.showcase__play');
-  if (!video || !overlay || !playButton) return;
-
-  playButton.addEventListener('click', () => {
+  const play    = wrap.querySelector('.showcase__play');
+  if (!video || !overlay || !play) return;
+  play.addEventListener('click', () => {
     if (video.paused) {
       video.play();
       overlay.style.opacity = '0';
       overlay.style.pointerEvents = 'none';
     }
   });
-
-  ['pause', 'ended'].forEach((eventName) => {
-    video.addEventListener(eventName, () => {
-      overlay.style.opacity = '1';
-      overlay.style.pointerEvents = 'auto';
-    });
-  });
+  ['pause','ended'].forEach(evt => video.addEventListener(evt, () => {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  }));
 });
 
-if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll('.btn, .glass').forEach((node) => {
-    node.addEventListener('mousemove', (event) => {
-      const rect = node.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      node.style.transform = `perspective(900px) rotateX(${y * -2.5}deg) rotateY(${x * 4}deg) translateY(-2px)`;
-    });
-    node.addEventListener('mouseleave', () => {
-      node.style.transform = '';
-    });
+// ── SMOOTH SCROLL – View Sample Tours → #showcase ────────────────
+const viewSampleBtn = document.getElementById('viewSampleBtn');
+if (viewSampleBtn) {
+  viewSampleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.getElementById('showcase');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }
 
+// ── GLASS TILT HOVER ─────────────────────────────────────────────
+if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+  document.querySelectorAll('.glass:not(.hero__content):not(.hero__top-row)').forEach(node => {
+    node.addEventListener('mousemove', (e) => {
+      const r = node.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      node.style.transform = `perspective(900px) rotateX(${y * -2.5}deg) rotateY(${x * 4}deg) translateY(-2px)`;
+    });
+    node.addEventListener('mouseleave', () => { node.style.transform = ''; });
+  });
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      btn.style.transform = `perspective(600px) rotateX(${y * -3}deg) rotateY(${x * 5}deg) translateY(-3px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+}
+
+// ── PARALLAX HERO ─────────────────────────────────────────────────
 const heroCopy = document.querySelector('.hero__copy');
 const heroPanel = document.querySelector('.hero__panel');
 let ticking = false;
@@ -239,20 +239,17 @@ window.addEventListener('scroll', () => {
   ticking = true;
   requestAnimationFrame(() => {
     const offset = Math.min(window.scrollY, 500);
-    if (heroCopy) heroCopy.style.transform = `translateY(${offset * 0.05}px)`;
-    if (heroPanel) heroPanel.style.transform = `translateY(${offset * -0.03}px)`;
+    if (heroCopy)  heroCopy.style.transform  = `translateY(${offset * 0.04}px)`;
+    if (heroPanel) heroPanel.style.transform = `translateY(${offset * -0.025}px)`;
     ticking = false;
   });
 }, { passive: true });
 
+// ── INIT ─────────────────────────────────────────────────────────
 window.addEventListener('load', () => {
   updateNavState();
-  if (!prefersReducedMotion) {
-    initParticles();
-    animateCanvas();
-  }
+  if (!prefersReducedMotion) { initParticles(); animateCanvas(); }
 });
-
 window.addEventListener('resize', () => {
   if (!canvas || prefersReducedMotion) return;
   cancelAnimationFrame(rafId);
