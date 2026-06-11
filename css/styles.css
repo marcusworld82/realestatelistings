@@ -174,6 +174,13 @@ body::before{
   color:rgba(255,255,255,.82);white-space:nowrap;
   margin-bottom:1.8rem;
 }
+/* INVISIBLE word treatment */
+.headline-black{
+  color:#111111;
+  -webkit-text-stroke:1px rgba(255,255,255,.18);
+  text-shadow:0 2px 18px rgba(0,0,0,.45),0 1px 0 rgba(255,255,255,.12);
+  display:inline-block;
+}
 .hero__headline{
   font-family:var(--font-display);
   font-size:clamp(3.6rem,9.5vw,8.8rem);
@@ -183,7 +190,7 @@ body::before{
 }
 .hero__sub{max-width:80ch;font-size:clamp(.98rem,1.55vw,1.13rem);color:var(--muted);margin-bottom:2rem}
 .hero__ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.2rem}
-/* Hero trust stats — centered text inside each box */
+/* Hero trust stats — centered */
 .hero__trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
 .hero__trust-item{
   padding:1.2rem 1rem 1.4rem;
@@ -280,7 +287,7 @@ body::before{
 .cta-stack__shell{border-radius:40px;padding:clamp(2rem,4vw,3.4rem);text-align:center}
 .cta-stack .section-title{margin-top:.65rem}
 .cta-stack__buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem;margin-top:2rem}
-/* CONTACT — three centered cards */
+/* CONTACT — two centered cards */
 .contact__cards{
   display:flex;
   flex-wrap:wrap;
